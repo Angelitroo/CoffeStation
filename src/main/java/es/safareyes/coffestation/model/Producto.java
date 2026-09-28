@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.*;
 
 @Entity
 @Table(name = "producto")
@@ -36,6 +37,15 @@ public class Producto {
     @ManyToOne
     @JoinColumn(name = "id_categoria", nullable = false)
     private Categoria categoria;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "producto_alergeno",
+            joinColumns = @JoinColumn(name = "id_producto"),
+            inverseJoinColumns = @JoinColumn(name = "id_alergeno")
+    )
+    private List<Alergeno> alergeno;
 
 
 }
