@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "producto")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

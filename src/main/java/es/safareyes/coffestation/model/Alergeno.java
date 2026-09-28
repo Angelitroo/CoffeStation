@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 @Entity
+@Table(name = "alergeno")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

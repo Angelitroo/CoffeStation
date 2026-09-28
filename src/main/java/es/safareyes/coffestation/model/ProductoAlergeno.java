@@ -10,7 +10,6 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "producto_alergeno")
-@IdClass(ProductoAlergeno.ProductoAlergenoId.class)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,14 +23,5 @@ public class ProductoAlergeno {
     @ManyToOne
     @JoinColumn(name = "id_alergeno", nullable = false)
     private Alergeno alergeno;
-
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class ProductoAlergenoId implements Serializable {
-        private Long producto;
-        private Long alergeno;
-    }
-
 
 }

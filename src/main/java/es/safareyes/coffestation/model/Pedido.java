@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "pedido")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
