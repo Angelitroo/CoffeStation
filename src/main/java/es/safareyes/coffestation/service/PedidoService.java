@@ -28,8 +28,18 @@ public class PedidoService {
     public Pedido updatePedidoEstado(Long id, PedidoDTO pedidoDTO) {
         Pedido pedido = pedidoRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Pedido no encontrado"));
-        pedido.setEstado(pedidoDTO.getEstado());
+        Estado estadoNuevo = pedidoDTO.getEstado();
+        pedido.setEstado(estadoNuevo);
+        //Cancelar un pedido devuelve el uso al cupón aplicado.
+        if (estadoNuevo == Estado.CANCELADO && pedido.getCupon() != null) {
+            pedido.getCupon().setMaxUsos(pedidoDTO.getMaxUsos());
+        }
         return pedidoRepository.save(pedido);
+    }
+
+    public Integer getPedidosByCupon(String codigo){
+        return pedidoRepository.findByCupon_Codigo(codigo);
+
     }
 
 }

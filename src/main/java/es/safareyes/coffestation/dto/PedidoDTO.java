@@ -11,4 +11,5 @@ import lombok.NoArgsConstructor;
 public class PedidoDTO {
     private Long id;
     private Estado estado;
+    private Integer maxUsos;
 }

@@ -26,6 +26,11 @@ public class PedidoController {
         return pedidoService.getPedidoById(id);
     }
 
+    @GetMapping("/cupon/{codigo}")
+    public Integer getPedidosByCodigo(@PathVariable String codigo){
+        return pedidoService.getPedidosByCupon(codigo);
+    }
+
     @PutMapping("/actualizar/{id}")
     public Pedido updatePedidoEstado(@PathVariable Long id, @RequestBody PedidoDTO pedidoDTO){
         return pedidoService.updatePedidoEstado(id, pedidoDTO);
