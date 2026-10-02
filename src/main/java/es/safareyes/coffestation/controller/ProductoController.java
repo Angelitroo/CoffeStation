@@ -37,5 +37,15 @@ public class ProductoController {
         return ResponseEntity.ok(productoService.createProducto(productoDTOcrear));
     }
 
+    @PutMapping("/actualizar/{id}")
+    public ResponseEntity<ProductoDTO> updateProducto(@PathVariable Long id, @RequestBody ProductoDTO productoDTO){
+        return ResponseEntity.ok(productoService.updateProducto(productoDTO, id));
+    }
+
+    @PatchMapping("/actualizar/disponibilidad/{id}")
+    public ResponseEntity<ProductoDTO> updateProductoDisponibilidad(@PathVariable Long id, @RequestBody Boolean disponibilidad){
+        return ResponseEntity.ok(productoService.updateProductoDisponibilidad(disponibilidad, id));
+    }
+
 
 }

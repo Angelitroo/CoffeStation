@@ -62,6 +62,30 @@ public class ProductoService {
         return convertToDTO(savedProducto);
     }
 
+    public ProductoDTO updateProducto(ProductoDTO productoDTO, Long id){
+        Producto producto = productoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Producto no encontrado"));
+
+        producto.setNombre(productoDTO.getNombre());
+        producto.setDescripcion(productoDTO.getDescripcion());
+        producto.setPrecio(productoDTO.getPrecio());
+        producto.setDisponible(productoDTO.getDisponible());
+        producto.setActivo(productoDTO.getActivo());
+
+        Producto productoUpdated = productoRepository.save(producto);
+        return convertToDTO(productoUpdated);
+    }
+
+    public ProductoDTO updateProductoDisponibilidad(Boolean disponible, Long id){
+        Producto producto = productoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Producto no encontrado"));
+
+        producto.setDisponible(disponible);
+
+        Producto productoUpdated = productoRepository.save(producto);
+        return convertToDTO(productoUpdated);
+    }
+
 
     public ProductoDTO convertToDTO(Producto producto) {
         return new ProductoDTO(
